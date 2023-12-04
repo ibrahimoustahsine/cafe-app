@@ -1,0 +1,24 @@
+.container {
+  /* background: purple; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.orders_strip {
+  width: 100%;
+  height: 75px;
+  /* background: darkkhaki; */
+  flex-shrink: 0;
+}
+.filler {
+  background: white;
+  border: 1px solid black;
+  height: 100px;
+}
+
+.menu_categories {
+  border-bottom: 1px solid rgb(45, 45, 45);
+}

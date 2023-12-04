@@ -1,0 +1,25 @@
+query FoodMenuPaymentView($onlyActive: Boolean!, $restaurant_id: Int) {
+  restaurants {
+    id
+    name
+  }
+  restaurant(id: $restaurant_id) {
+    id
+    name
+    menus(onlyActive: $onlyActive) {
+      active
+      categories {
+        id
+        name
+        icon
+        item_count
+        menu_items {
+          id
+          name
+          price
+          description
+        }
+      }
+    }
+  }
+}

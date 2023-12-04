@@ -1,0 +1,31 @@
+.view_selector {
+  height: 40px;
+  /* background: darkblue; */
+  border: 1px solid rgb(145, 145, 145);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+.view_selector:hover {
+  background: rgb(45, 45, 45);
+}
+
+.selector_img {
+  border-radius: 100%;
+  border: 1px solid rgb(45, 45, 45);
+  margin: 0 5px;
+  background-color: aliceblue;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.selector_account_name {
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+}

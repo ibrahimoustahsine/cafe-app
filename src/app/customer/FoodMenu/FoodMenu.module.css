@@ -1,0 +1,32 @@
+.middle_section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.food_menu_cont::-webkit-scrollbar {
+  display: none;
+}
+.food_menu_cont {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* background: cyan; */
+  overflow: scroll;
+  flex-grow: 1;
+}
+
+.menu_categories,
+.menu_items {
+  /* background: purple; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 1rem;
+  padding: 10px 0px;
+}
+
+.menu_categories {
+  border-bottom: 1px solid rgb(45, 45, 45);
+}

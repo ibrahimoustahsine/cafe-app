@@ -1,0 +1,42 @@
+.selected_menu_item {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background: rgb(45, 45, 45);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 15px;
+}
+.selected_menu_item > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.selected_menu_item > div > span {
+  margin: 0 10px;
+  display: inline-block;
+  background: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  font-size: 10px;
+  color: rgb(45, 45, 45);
+  align-items: center;
+}
+
+.selected_menu_item > div > p {
+  font-size: 10px;
+  /* color: rgb(145, 145, 145); */
+}
+
+.selected_menu_item > div > p > span {
+  color: rgb(145, 145, 145);
+  margin-left: 4px;
+}
+
+.selected_menu_item > span {
+  font-size: 10px;
+}

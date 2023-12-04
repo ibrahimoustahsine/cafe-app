@@ -1,0 +1,39 @@
+.restaurant_selector {
+  width: 250px;
+  height: var(--strip-height);
+  padding: 10px 0;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.restaurant_display {
+  background-color: rgb(45, 45, 45);
+  border-radius: 2px;
+  border: 1px solid rgb(242, 242, 242);
+  width: 100%;
+}
+
+.restaurant_display > p {
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  /* height: 50px; */
+  /* line-height: 50px; */
+  color: rgb(242, 242, 242);
+  /* position: absolute; */
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+}
+
+.restaurant_selection {
+  width: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(var(--strip-height));
+  background: rgb(45, 45, 45);
+  border: 1px solid rgb(242, 242, 242);
+  border-radius: 2px;
+}

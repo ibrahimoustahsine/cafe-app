@@ -1,0 +1,9 @@
+.order_payment_cont {
+  /* background: orange; */
+  padding: 10px 20px 20px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}

@@ -1,0 +1,5 @@
+.delivery_selector_cont {
+  height: var(--strip-height);
+  /* background: aquamarine; */
+  flex-shrink: 0;
+}

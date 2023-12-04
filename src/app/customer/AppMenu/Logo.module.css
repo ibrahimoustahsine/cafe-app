@@ -1,0 +1,12 @@
+.logo_cont {
+  height: var(--strip-height);
+  /* background: darkorange; */
+}
+
+.logo_text {
+  font-size: 24px;
+  font-weight: medium;
+  padding-left: 25px;
+  line-height: var(--strip-height);
+  cursor: pointer;
+}
