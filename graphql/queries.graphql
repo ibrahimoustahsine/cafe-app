@@ -23,3 +23,52 @@ query FoodMenuPaymentView($onlyActive: Boolean!, $restaurant_id: Int) {
     }
   }
 }
+
+query Orders {
+  orders {
+    customer_name
+    order_date
+    order_id
+    status
+    total_price
+  }
+}
+
+mutation Place_order(
+  $customerId: Int!
+  $price: Float!
+  $restaurantId: Int!
+  $items: [[Int!]!]!
+) {
+  place_order(
+    customer_id: $customerId
+    price: $price
+    restaurant_id: $restaurantId
+    items: $items
+  ) {
+    order_id
+    customer_name
+    order_date
+    order_date
+  }
+}
+
+mutation Finish_order($finishOrderId: Int!) {
+  finish_order(id: $finishOrderId) {
+    customer_name
+    order_date
+    order_id
+    status
+    total_price
+  }
+}
+
+mutation Cancel_order($cancelOrderId: Int!) {
+  cancel_order(id: $cancelOrderId) {
+    customer_name
+    order_date
+    order_id
+    status
+    total_price
+  }
+}

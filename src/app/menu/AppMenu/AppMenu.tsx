@@ -2,6 +2,7 @@ import styles from './AppMenu.module.css';
 
 import Logo from './Logo';
 import EmployeeSelectionOption from './EmployeeSelectionOption';
+import Link from 'next/link';
 
 export default function AppMenu() {
   return (
@@ -9,12 +10,12 @@ export default function AppMenu() {
       <div className={styles.flex_column}>
         <Logo />
         <ul className={styles.app_menu_list}>
-          <li className={styles.app_menu_item}>
-            <a>Menu</a>
-          </li>
-          <li className={styles.app_menu_item}>
-            <a>Accounting</a>
-          </li>
+          <Link href="/menu">
+            <li className={styles.app_menu_item}>Menu</li>
+          </Link>
+          <Link href="/orders">
+            <li className={styles.app_menu_item}>Orders</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.flex_column}>

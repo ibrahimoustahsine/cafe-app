@@ -1,0 +1,97 @@
+.orders_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 1rem;
+  padding: 10px 0px;
+  width: 100%;
+  font-size: 12px;
+}
+.order {
+  background: rgb(45, 45, 45);
+  min-width: 100px;
+  min-height: 150px;
+  /* aspect-ratio: 1 / 1; */
+  border-radius: 4px;
+  padding: 20px 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pending {
+  width: 40px;
+  height: 15px;
+  background: #d1b202;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 8px;
+  color: rgb(45, 45, 45);
+  text-align: center;
+  line-height: 15px;
+}
+.finished {
+  width: 40px;
+  height: 15px;
+  background: #1eea07;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 8px;
+  color: rgb(45, 45, 45);
+  text-align: center;
+  line-height: 15px;
+}
+
+.info {
+  margin-top: 20px;
+}
+
+.info > p {
+  font-size: 10px;
+  color: rgb(145, 145, 145);
+  margin-bottom: 4px;
+}
+
+.info > p > span {
+  color: white;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.finish {
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  background-color: #05ef43;
+  padding: 2px;
+  color: rgb(45, 45, 45);
+  font-weight: 500;
+  font-size: 10px;
+  height: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cancel {
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  background-color: #ff2a13;
+  padding: 2px;
+  color: rgb(45, 45, 45);
+  font-weight: 500;
+  font-size: 10px;
+  height: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}

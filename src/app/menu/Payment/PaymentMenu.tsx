@@ -4,12 +4,14 @@ export interface PaymentMenuProps {
   subtotal: number;
   tax: number;
   total: number;
+  onClickPlaceOrder: () => void;
 }
 
 export default function PaymentMenu({
   subtotal,
   tax,
   total,
+  onClickPlaceOrder,
 }: PaymentMenuProps) {
   return (
     <div className={style.payment_cont}>
@@ -44,7 +46,14 @@ export default function PaymentMenu({
             <p className={style.payment_method_name}>E-Wallet</p>
           </div>
         </div>
-        <button className={style.payment_button}>Place Order</button>
+        <button
+          className={style.payment_button}
+          onClick={() => {
+            onClickPlaceOrder();
+          }}
+        >
+          Place Order
+        </button>
       </div>
     </div>
   );

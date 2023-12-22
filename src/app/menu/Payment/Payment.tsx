@@ -32,6 +32,7 @@ export default function Payment() {
         subtotal={payment_menu.subtotal}
         tax={payment_menu.tax}
         total={payment_menu.total}
+        onClickPlaceOrder={payment_menu.onClickPlaceOrder}
       />
     </div>
   );

@@ -1,4 +1,9 @@
-import { MenuCategory, MenuItem } from '@/gql/__generated__/graphql';
+import {
+  Exact,
+  MenuCategory,
+  MenuItem,
+  Place_OrderMutation,
+} from '@/gql/__generated__/graphql';
 import {
   FoodMenuPaymentState,
   FoodMenuPaymentContext,
@@ -8,10 +13,41 @@ import { MenuCategoryProps } from './FoodMenu/MenuCategory';
 import { MenuItemProps } from './FoodMenu/MenuItem';
 import { SelectedMenuItemProps } from './Payment/SelectedMenuItem';
 import { RestaurantOptionProps } from './FoodMenu/RestaurantSelector';
+import { UseMutationExecute } from 'urql';
+import { stat } from 'fs';
+
+function get_order_items(state: FoodMenuPaymentState): number[][] {
+  const items: number[][] = [];
+
+  state.customer_order.forEach((item) => {
+    items.push([item.item_id, item.quanitity]);
+  });
+
+  return items;
+}
+
+function get_price(state: FoodMenuPaymentState): number {
+  let price = 0;
+
+  state.customer_order.forEach((item) => {
+    price += item.quanitity * item.unit_price;
+  });
+
+  return price;
+}
 
 export function getContext(
   state: FoodMenuPaymentState,
-  setState: React.Dispatch<React.SetStateAction<FoodMenuPaymentState>>
+  setState: React.Dispatch<React.SetStateAction<FoodMenuPaymentState>>,
+  placeOrder: UseMutationExecute<
+    Place_OrderMutation,
+    Exact<{
+      customerId: number;
+      price: number;
+      restaurantId: number;
+      items: number | number[] | (number | number[])[];
+    }>
+  >
 ): FoodMenuPaymentContext | CustomError {
   const { data } = state;
   if (!data)
@@ -28,7 +64,25 @@ export function getContext(
       subtotal: 0,
       tax: 0,
       total: 0,
+      async onClickPlaceOrder() {
+        if (state.customer_order.size > 0 && state.selected_restaurant) {
+          const result = await placeOrder({
+            customerId: 1,
+            items: get_order_items(state),
+            restaurantId: state.selected_restaurant,
+            price: get_price(state),
+          });
+
+          const { data, error } = result;
+
+          if (!error) {
+            state.customer_order = new Map();
+            setState({ ...state });
+          }
+        }
+      },
     },
+
     selected_menu_items: [],
     restaurants: {
       selected: {

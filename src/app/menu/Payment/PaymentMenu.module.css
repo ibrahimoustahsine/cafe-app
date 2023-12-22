@@ -71,6 +71,7 @@
   font-size: 14px;
   font-weight: medium;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .payment_devider {
   border-bottom: 1px dashed rgb(242, 242, 242);

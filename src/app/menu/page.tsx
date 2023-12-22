@@ -3,8 +3,11 @@ import style from './menu.module.css';
 import AppMenu from './AppMenu/AppMenu';
 import FoodMenu from './FoodMenu/FoodMenu';
 import Payment from './Payment/Payment';
-import { FoodMenuPaymentViewDocument } from '@/gql/__generated__/graphql';
-import { Client, Provider, fetchExchange, useQuery } from 'urql';
+import {
+  FoodMenuPaymentViewDocument,
+  Place_OrderDocument,
+} from '@/gql/__generated__/graphql';
+import { Client, Provider, fetchExchange, useMutation, useQuery } from 'urql';
 import { cacheExchange } from '@urql/exchange-graphcache';
 import React, { createContext, useEffect, useState } from 'react';
 import {
@@ -15,13 +18,8 @@ import {
 } from './types';
 
 import { getContext } from './helpers';
-import { stat } from 'fs';
 
 /* GraphQL client */
-const client = new Client({
-  url: 'http://localhost:4000/graphql',
-  exchanges: [cacheExchange({}), fetchExchange],
-});
 
 /* Default Context */
 const defaultContext: FoodMenuPaymentContext = {
@@ -31,6 +29,7 @@ const defaultContext: FoodMenuPaymentContext = {
     subtotal: 0.0,
     tax: 0.0,
     total: 0.0,
+    onClickPlaceOrder: () => {},
   },
   selected_menu_items: [],
   restaurants: {
@@ -46,7 +45,7 @@ export const foodMenuPaymentContext = createContext<
   FoodMenuPaymentContext | CustomError
 >(defaultContext);
 
-function Menu() {
+export default function Menu() {
   const [state, setState] = useState<FoodMenuPaymentState>({
     customer_order: new Map(),
     selected_category: 0,
@@ -59,9 +58,13 @@ function Menu() {
       restaurant_id: state.selected_restaurant,
     },
   });
+
+  const [_, placeOrder] = useMutation(Place_OrderDocument);
+
   const { data, fetching, error } = result;
 
   useEffect(() => {
+    console.log('Here: ', data);
     setState({
       customer_order: state.customer_order,
       selected_category: state.selected_category,
@@ -74,7 +77,7 @@ function Menu() {
   else if (error) return <h1>Error!!</h1>;
   else if (data) {
     /* TODO: clean this up */
-    const ctx = getContext(state, setState);
+    const ctx = getContext(state, setState, placeOrder);
 
     if (isCustomError(ctx)) return <div>Error page</div>;
     return (
@@ -88,11 +91,11 @@ function Menu() {
     );
   }
 }
-export default function MenuWrapper() {
-  return (
-    <Provider value={client}>
-      <Menu />
-    </Provider>
-  );
-}
+// export default function MenuWrapper() {
+//   return (
+//     <Provider value={client}>
+//       <Menu />
+//     </Provider>
+//   );
+// }
 //
